@@ -1,0 +1,429 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-...">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    background: #E1ECF0;
+    background: linear-gradient(180deg, #E1ECF0 0%, #a7c9ee 50%, #2d5775 100%);
+    font-family: cambria;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .col {
+    box-sizing: border-box;
+    padding: 10px;
+    flex: 1;
+    margin-top: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 10px;
+  }
+
+  .spacer {
+    flex: 1;
+    max-width: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .row {
+      flex-direction: column;
+    }
+
+    .container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .Panel {
+    -webkit-box-shadow: 8px 14px 23px -6px rgba(173, 173, 189, 1);
+    -moz-box-shadow: 8px 14px 23px -6px rgba(173, 173, 189, 1);
+    box-shadow: 8px 14px 23px -6px rgba(173, 173, 189, 1);
+    border-radius: 10px;
+  }
+
+  .in-box {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+  }
+
+  .searchPanel {
+    box-sizing: border-box;
+    padding: 10px;
+    margin-right: 100px;
+    margin-top: 15px;
+    background-color: #ffffff46;
+    border-radius: 10px;
+  }
+
+  .searchPanel input {
+    background-color: transparent;
+    width: 80%;
+    box-sizing: border-box;
+    flex: 1;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    padding: 0 1px;
+    color: #505050;
+  }
+
+  .searchPanel input::placeholder {
+    color: rgba(82, 82, 82, 0.45)
+  }
+
+  .searchPanel button {
+    border: none;
+    float: right;
+    color: rgb(63, 61, 61);
+    background-color: transparent;
+
+
+  }
+
+  .topnav {
+    overflow: hidden;
+    background: #cfdee9b4;
+    box-shadow: 0 8px 32px 0 rgba(62, 88, 202, 0.37);
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    margin-top: 10px;
+  }
+
+  h3 {
+    font-family: 'Arial', sans-serif;
+    color: #2a5480;
+    font-size: 24px;
+  }
+
+  .col p {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #333;
+  }
+
+  h6 {
+    font-family: 'Arial', sans-serif;
+    background-color: #2a5480;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .topnav a {
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 17px;
+    float: left;
+    display: block;
+    font-family: 'Arial', sans-serif;
+    color: #6b6b6b;
+    text-decoration: none;
+  }
+
+  .topnav a:hover {
+    font-family: 'Arial', sans-serif;
+    background-color: #9eb5c4;
+    color: #fff;
+  }
+
+  .topnav a.active {
+    font-family: 'Arial', sans-serif;
+    background-color: #003A64;
+    color: #fff;
+  }
+
+  .topnav .icon {
+    display: none;
+  }
+
+  .tablediv {
+    width: 100%;
+    height: 100%;
+  }
+
+  .tablediv table {
+    width: 100%;
+    height: 100%;
+  }
+
+  .tablediv table td {
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 767px) {
+    .tablediv table td p {
+      font-size: 14px !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+      display: none;
+    }
+
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .topnav.responsive {
+      position: relative;
+    }
+
+    .topnav.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .searchPanel,
+    .logo {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .searchPanel {
+      margin-right: 0;
+      margin-top: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .Günlük ul li {
+      margin-right: 20px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .Saatlik ul li {
+      margin-right: 15px;
+    }
+  }
+</style>
+
+<body>
+  <div style=" display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div class="logo" style="  box-sizing: border-box; padding: 10px; width: calc(50% - 10px);">
+      <img src="{% static 'images/logo.png' %}" alt="" style="width: 100px; height: 100px; display: block;">
+      <div>
+        <h3 style="margin-left:10px ; margin-top: -15px; font-family: cursive; color: #2a5480">Weather</h3>
+      </div>
+    </div>
+    <form method="post" action="{% url 'main' %}">
+      {% csrf_token %}
+      <div class="searchPanel Panel">
+        <input type="text" name="city" placeholder="Şehir Ara">
+        <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-search" viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg></button>
+      </div>
+    </form>
+  </div>
+  <div class="topnav" id="myTopnav">
+    <a href="#Bugün" class="active">Bugün</a>
+    <a href="#Saatlik">Saatlik</a>
+    <a href="#10Günlük">10 Günlük</a>
+    <a href="#Aylık">Aylık</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col div1">
+        <div style="text-align: left;">
+          <p style="font-size: 32px; display: inline; font-weight:500;">{{ data.city }}</p>
+          <p style="font-size: 20px; display: inline; margin-left: 8px;">{{ data.request_time }} itibariyle,</p>
+        </div>
+        <div style="text-align: center; margin-top: 10px;"><img src="{{ data.icon_url }}" alt="{{ data.description }}"
+            style="width: 100px; height: 100px;"></div>
+        <div style="text-align: center; font-size: 35px; color: #003A64; font-weight: bolder;">{{ data.temperature }}°C
+        </div>
+        <div style="text-align: center; font-size: 20px; color: #464545;">{{ data.description }}</div>
+        <div style="text-align: center; font-size: 20px; color: #3b7272;">Hissedilen Sıcaklık: {{ data.feels_like }}°C
+        </div>
+      </div>
+      <div class="spacer"></div>
+
+      <div class="col">
+        <div class="tablediv">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <p style="display: inline-block; font-size: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                      height="16" fill="currentColor" class="bi bi-sunset" viewBox="0 0 16 16">
+                      <path
+                        d="M7.646 4.854a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V1.5a.5.5 0 0 0-1 0v1.793l-.646-.647a.5.5 0 1 0-.708.708l1.5 1.5zm-5.303-.51a.5.5 0 0 1 .707 0l1.414 1.413a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .706l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    Gün batımı : {{ data.sunset}}</p>
+                </td>
+                <td>
+                  <p style="font-size: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                      <path
+                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                      <path
+                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                    </svg>
+                    Görüş Mesafesi: {{ data.visibility }} </p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <hr
+                    style="width: 60%; margin-left: 20%; margin-right: 20%; color: #757575; margin-top: 5px ; margin-bottom: 0px;">
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <p style="display: inline-block; font-size: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                      height="16" fill="currentColor" class="bi bi-moisture" viewBox="0 0 16 16">
+                      <path
+                        d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5h-2zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a28.458 28.458 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a28.458 28.458 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001L7 1.5zm0 0-.364-.343L7 1.5zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267z" />
+                    </svg>
+                    Nem Oranı : {{ data.humidity }}%</p>
+                </td>
+                <td>
+                  <p style="font-size: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                    Basınç: {{ data.pressure }} hPa</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <hr
+                    style="width: 60%; margin-left: 20%; margin-right: 20%; color: #757575; margin-top: 5px ; margin-bottom: 0px;">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wind"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5zm-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2zM0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5z" />
+                  </svg>
+                  <p style="display: inline-block; font-size: 20px;">Rüzgar Hızı : {{ data.wind_speed }} m/s</p>
+                </td>
+                <td>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wind"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5zm-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2zM0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5z" />
+                  </svg>
+                  <p style="display: inline-block; font-size: 20px;">Rüzgar Derecesi : {{ data.wind_deg }}°</p>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6>Saatlik Hava Durumu</h6>
+        <hr style="width: 100%; color: #757575; margin-top: 5px ; margin-bottom: 0px;">
+        {% if hourly_forecast_data %}
+        <div class="Saatlik" style="margin-top:8px;">
+          <ul
+            style="display: flex; text-align: center; list-style-type:none; justify-content: center;flex-wrap: wrap;padding-left:0rem;">
+            {% for forecast in hourly_forecast_data %}
+            <li class="in-box" style="flex-basis: 25%;">
+              <p>{{ forecast.time }}</p>
+              <p style="font-weight: bold; ; color: #2a5480;">{{ forecast.temperature }}°C </p>
+              <img src="{{ forecast.icon_url}}" alt="icon">
+              <p>{{ forecast.description }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h6>Günlük Hava Durumu</h6>
+        <hr style="width: 100%; color: #cfcfcf; margin-top: 5px ; margin-bottom: 0px;">
+        <div class="Günlük" style="margin-top:8px;">
+          <ul
+            style="display: flex; text-align: center; list-style-type:none; justify-content: center;flex-wrap: wrap;padding-left:0rem; ">
+            {% for day in forecast_data %}
+            <li class="in-box" style="flex-basis: 20%;">
+              <p>{{ day.date | date:"d/m/Y" }}</p>
+              <img src="{{ day.icon_url }}" alt="icon">
+              <p style="font-weight: bold; ; color: #2a5480;">{{ day.temperature }}°C</p>
+              <p>{{ day.description }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+</script>
+
+</html>
